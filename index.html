@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinTech Portfolio</title>
+<title>Kunal Mehta — FinTech Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -18,870 +18,478 @@
     --muted: #7d8590;
     --green: #3fb950;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Animated grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Glow orbs */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 0;
-    animation: drift 20s ease-in-out infinite;
-  }
-  .orb1 { width: 600px; height: 600px; background: var(--accent); top: -200px; left: -100px; animation-delay: 0s; }
-  .orb2 { width: 400px; height: 400px; background: var(--accent3); bottom: 10%; right: -100px; animation-delay: -7s; }
-  .orb3 { width: 300px; height: 300px; background: var(--accent2); top: 40%; left: 40%; animation-delay: -14s; }
-
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -30px) scale(1.05); }
-    66% { transform: translate(-20px, 20px) scale(0.95); }
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── HEADER ── */
-  header {
-    padding: 80px 0 60px;
-    position: relative;
-  }
-
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(63,185,80,0.1);
-    border: 1px solid rgba(63,185,80,0.25);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 11px;
-    color: var(--green);
-    margin-bottom: 28px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .status-dot {
-    width: 7px; height: 7px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
-  }
-
-  .name {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(42px, 8vw, 72px);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-  }
-
-  .name span {
-    background: linear-gradient(135deg, var(--accent) 0%, #00a884 50%, var(--accent3) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .title-line {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 20px;
-    letter-spacing: 0.08em;
-  }
-
-  .title-line .sep { margin: 0 10px; color: var(--border); }
-
-  .bio {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #8b949e;
-    max-width: 560px;
-    margin-bottom: 32px;
-    font-family: 'DM Mono', monospace;
-    font-weight: 300;
-  }
-
-  .bio strong { color: var(--accent); font-weight: 500; }
-
-  .links {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-family: 'DM Mono', monospace;
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: all 0.2s ease;
-    border: 1px solid;
-  }
-
-  .link-btn.primary {
-    background: var(--accent);
-    color: #000;
-    border-color: var(--accent);
-    font-weight: 500;
-  }
-
-  .link-btn.primary:hover {
-    background: #00b894;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,212,170,0.3);
-  }
-
-  .link-btn.secondary {
-    background: transparent;
-    color: var(--text);
-    border-color: var(--border);
-  }
-
-  .link-btn.secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  /* ── SECTION ── */
-  section { padding: 60px 0; border-top: 1px solid var(--border); }
-
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 32px;
-    color: var(--text);
-  }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    transition: border-color 0.2s;
-  }
-
-  .skill-group:hover { border-color: rgba(0,212,170,0.4); }
-
-  .skill-group-title {
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .skill-group-title::before {
-    content: '';
-    width: 20px; height: 1px;
-    background: var(--accent);
-    opacity: 0.5;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 11px;
-    color: #8b949e;
-    transition: all 0.15s;
-  }
-
-  .tag:hover {
-    background: rgba(0,212,170,0.08);
-    border-color: rgba(0,212,170,0.3);
-    color: var(--accent);
-  }
-
-  /* ── PROJECTS ── */
-  .projects-grid {
-    display: grid;
-    gap: 16px;
-  }
-
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    color: inherit;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .project-card:hover {
-    border-color: rgba(255,255,255,0.15);
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
-
-  .project-card:hover::before { opacity: 1; }
-
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-
-  .card-icon {
-    font-size: 22px;
-    margin-bottom: 4px;
-  }
-
-  .card-meta {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .card-lang {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .lang-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: #3572A5;
-  }
-
-  .card-stars {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .project-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text);
-  }
-
-  .project-desc {
-    font-size: 12px;
-    line-height: 1.65;
-    color: #7d8590;
-    margin-bottom: 18px;
-    font-weight: 300;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .card-tag {
-    font-size: 10px;
-    padding: 3px 9px;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
-  }
-
-  .card-tag.trading { background: rgba(0,212,170,0.1); color: var(--accent); border: 1px solid rgba(0,212,170,0.2); }
-  .card-tag.defi { background: rgba(247,147,26,0.1); color: var(--accent2); border: 1px solid rgba(247,147,26,0.2); }
-  .card-tag.risk { background: rgba(99,102,241,0.1); color: var(--accent3); border: 1px solid rgba(99,102,241,0.2); }
-  .card-tag.neutral { background: rgba(255,255,255,0.04); color: #8b949e; border: 1px solid var(--border); }
-
-  /* ── STATS BAR ── */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 60px;
-  }
-
-  .stat {
-    background: var(--surface);
-    padding: 24px 20px;
-    text-align: center;
-    transition: background 0.2s;
-  }
-
-  .stat:hover { background: var(--surface2); }
-
-  .stat-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--text);
-    display: block;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .stat-label {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── CONTRIBUTION GRAPH ── */
-  .contrib-section { padding: 40px 0 60px; border-top: 1px solid var(--border); }
-
-  .contrib-graph {
-    display: flex;
-    gap: 3px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-  }
-
-  .contrib-week {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .contrib-day {
-    width: 12px; height: 12px;
-    border-radius: 2px;
-    background: #161b22;
-    transition: transform 0.1s;
-  }
-
-  .contrib-day:hover { transform: scale(1.4); }
-  .contrib-day.l1 { background: #0e4429; }
-  .contrib-day.l2 { background: #006d32; }
-  .contrib-day.l3 { background: #26a641; }
-  .contrib-day.l4 { background: #39d353; }
-
-  /* ── EDUCATION ── */
-  .edu-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    transition: border-color 0.2s;
-  }
-
-  .edu-card:hover { border-color: rgba(0,212,170,0.35); }
-
-  .edu-icon {
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-
-  .edu-degree {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .edu-school {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-
-  .edu-school span { color: var(--accent); }
-
-  .edu-modules {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .footer-note { letter-spacing: 0.05em; }
-
-  .footer-links { display: flex; gap: 20px; }
-  .footer-links a { color: var(--muted); text-decoration: none; }
-  .footer-links a:hover { color: var(--accent); }
-
-  /* ── TERMINAL BLOCK ── */
-  .terminal {
-    background: #0d1117;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 40px;
-  }
-
-  .terminal-bar {
-    background: #161b22;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .t-dot.r { background: #ff5f56; }
-  .t-dot.y { background: #ffbd2e; }
-  .t-dot.g { background: #27c93f; }
-
-  .terminal-title { font-size: 11px; color: var(--muted); margin-left: auto; letter-spacing: 0.05em; }
-
-  .terminal-body {
-    padding: 20px;
-    font-size: 12px;
-    line-height: 1.8;
-  }
-
-  .t-line { display: flex; gap: 8px; }
-  .t-prompt { color: var(--accent); user-select: none; }
-  .t-cmd { color: #cdd9e5; }
-  .t-comment { color: #484f58; font-style: italic; }
-  .t-out { color: #7d8590; padding-left: 24px; }
-  .t-key { color: var(--accent3); }
-  .t-val { color: #a5d6ff; }
-  .t-str { color: #7ee787; }
-
-  @media (max-width: 600px) {
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    footer { flex-direction: column; gap: 16px; text-align: center; }
-    .card-top { flex-direction: column; gap: 10px; }
-  }
-
-  /* Scroll fade-in */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-in:nth-child(1) { animation-delay: 0.1s; }
-  .fade-in:nth-child(2) { animation-delay: 0.2s; }
-  .fade-in:nth-child(3) { animation-delay: 0.3s; }
-  .fade-in:nth-child(4) { animation-delay: 0.4s; }
-  .fade-in:nth-child(5) { animation-delay: 0.5s; }
-  .fade-in:nth-child(6) { animation-delay: 0.6s; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; min-height: 100vh; overflow-x: hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image: linear-gradient(rgba(0,212,170,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(0,212,170,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; z-index:0; }
+  .orb { position:fixed; border-radius:50%; filter:blur(120px); opacity:0.10; pointer-events:none; z-index:0; animation:drift 20s ease-in-out infinite; }
+  .orb1 { width:600px;height:600px;background:var(--accent);top:-200px;left:-100px; }
+  .orb2 { width:400px;height:400px;background:var(--accent3);bottom:10%;right:-100px;animation-delay:-7s; }
+  .orb3 { width:300px;height:300px;background:var(--accent2);top:40%;left:40%;animation-delay:-14s; }
+  @keyframes drift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-30px) scale(1.05)} 66%{transform:translate(-20px,20px) scale(0.95)} }
+  .container { max-width:920px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+  /* HEADER */
+  header { padding:72px 0 56px; }
+  .status-badge { display:inline-flex;align-items:center;gap:8px;background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.25);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--green);margin-bottom:28px;letter-spacing:0.05em;text-transform:uppercase; }
+  .status-dot { width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+  .name { font-family:'Syne',sans-serif;font-size:clamp(44px,8vw,74px);font-weight:800;line-height:1;letter-spacing:-0.03em;margin-bottom:6px; }
+  .name span { background:linear-gradient(135deg,var(--accent) 0%,#00a884 50%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+  .title-line { font-size:12px;color:var(--muted);margin-bottom:20px;letter-spacing:0.07em; }
+  .title-line .sep { margin:0 10px;color:var(--border); }
+  .bio { font-size:14px;line-height:1.75;color:#8b949e;max-width:620px;margin-bottom:32px;font-weight:300; }
+  .bio strong { color:var(--accent);font-weight:500; }
+  .links { display:flex;gap:10px;flex-wrap:wrap; }
+  .link-btn { display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:8px;font-size:11px;font-family:'DM Mono',monospace;text-decoration:none;letter-spacing:0.04em;transition:all 0.2s ease;border:1px solid; }
+  .link-btn.primary { background:var(--accent);color:#000;border-color:var(--accent);font-weight:500; }
+  .link-btn.primary:hover { background:#00b894;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,170,0.3); }
+  .link-btn.secondary { background:transparent;color:var(--text);border-color:var(--border); }
+  .link-btn.secondary:hover { border-color:var(--accent);color:var(--accent);transform:translateY(-2px); }
+
+  /* SECTIONS */
+  section { padding:56px 0;border-top:1px solid var(--border); }
+  .section-label { font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px; }
+  .section-title { font-family:'Syne',sans-serif;font-size:26px;font-weight:700;margin-bottom:28px; }
+
+  /* STATS */
+  .stats-bar { display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:56px; }
+  .stat { background:var(--surface);padding:20px 16px;text-align:center;transition:background 0.2s; }
+  .stat:hover { background:var(--surface2); }
+  .stat-value { font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--text);display:block;line-height:1;margin-bottom:5px; }
+  .stat-label { font-size:9px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase; }
+
+  /* TERMINAL */
+  .terminal { background:#0d1117;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:40px; }
+  .terminal-bar { background:#161b22;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border); }
+  .t-dot { width:10px;height:10px;border-radius:50%; }
+  .t-dot.r{background:#ff5f56} .t-dot.y{background:#ffbd2e} .t-dot.g{background:#27c93f}
+  .terminal-title { font-size:11px;color:var(--muted);margin-left:auto; }
+  .terminal-body { padding:20px;font-size:12px;line-height:1.9; }
+  .t-line { display:flex;gap:8px; }
+  .t-prompt{color:var(--accent)} .t-out{color:#7d8590;padding-left:24px}
+  .t-key{color:var(--accent3)} .t-val{color:#a5d6ff} .t-str{color:#7ee787}
+
+  /* ROLES */
+  .roles-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px; }
+  .role-card { background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all 0.2s;position:relative;overflow:hidden; }
+  .role-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--rc,var(--accent)),transparent); }
+  .role-card:hover { border-color:rgba(255,255,255,0.12);transform:translateY(-2px); }
+  .role-title { font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:5px; }
+  .role-match { font-size:10px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:9px; }
+  .role-desc { font-size:11px;color:var(--muted);line-height:1.65;font-weight:300; }
+  .role-tags { display:flex;flex-wrap:wrap;gap:5px;margin-top:12px; }
+
+  /* EXPERIENCE */
+  .exp-timeline { position:relative; }
+  .exp-timeline::before { content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),var(--border)); }
+  .exp-item { padding-left:28px;margin-bottom:40px;position:relative; }
+  .exp-item::before { content:'';position:absolute;left:-4px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--accent);border:2px solid var(--bg); }
+  .exp-header { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:8px; }
+  .exp-company { font-family:'Syne',sans-serif;font-size:16px;font-weight:700; }
+  .exp-period { font-size:11px;color:var(--accent);background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);border-radius:6px;padding:3px 10px;white-space:nowrap; }
+  .exp-role { font-size:12px;color:var(--muted);margin-bottom:12px; }
+  .exp-bullets { list-style:none; }
+  .exp-bullets li { font-size:12px;color:#8b949e;line-height:1.7;padding-left:16px;position:relative;margin-bottom:5px;font-weight:300; }
+  .exp-bullets li::before { content:'▸';position:absolute;left:0;color:var(--accent);font-size:10px;top:2px; }
+  .exp-bullets li strong { color:var(--text);font-weight:500; }
+
+  /* PROJECTS */
+  .projects-grid { display:grid;gap:14px; }
+  .project-card { background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px;transition:all 0.25s ease;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;display:block;color:inherit; }
+  .project-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--card-accent,var(--accent)),transparent);opacity:0;transition:opacity 0.3s; }
+  .project-card:hover { border-color:rgba(255,255,255,0.15);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.4); }
+  .project-card:hover::before { opacity:1; }
+  .card-top { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px; }
+  .card-icon { font-size:20px;margin-bottom:4px; }
+  .card-lang { display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted); }
+  .lang-dot { width:10px;height:10px;border-radius:50%;background:#3572A5; }
+  .project-name { font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:7px; }
+  .project-desc { font-size:12px;line-height:1.65;color:#7d8590;margin-bottom:16px;font-weight:300; }
+  .card-tags { display:flex;flex-wrap:wrap;gap:6px; }
+  .card-tag { font-size:10px;padding:3px 9px;border-radius:4px;letter-spacing:0.05em; }
+  .card-tag.trading{background:rgba(0,212,170,0.1);color:var(--accent);border:1px solid rgba(0,212,170,0.2)}
+  .card-tag.defi{background:rgba(247,147,26,0.1);color:var(--accent2);border:1px solid rgba(247,147,26,0.2)}
+  .card-tag.risk{background:rgba(99,102,241,0.1);color:var(--accent3);border:1px solid rgba(99,102,241,0.2)}
+  .card-tag.neutral{background:rgba(255,255,255,0.04);color:#8b949e;border:1px solid var(--border)}
+
+  /* SKILLS */
+  .skills-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px; }
+  .skill-group { background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color 0.2s; }
+  .skill-group:hover { border-color:rgba(0,212,170,0.4); }
+  .skill-group-title { font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px; }
+  .skill-group-title::before { content:'';width:20px;height:1px;background:var(--accent);opacity:0.5; }
+  .tags { display:flex;flex-wrap:wrap;gap:7px; }
+  .tag { background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;color:#8b949e;transition:all 0.15s; }
+  .tag:hover { background:rgba(0,212,170,0.08);border-color:rgba(0,212,170,0.3);color:var(--accent); }
+
+  /* EDUCATION */
+  .edu-list { display:flex;flex-direction:column;gap:12px; }
+  .edu-card { background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 26px;display:flex;gap:18px;align-items:flex-start;transition:border-color 0.2s; }
+  .edu-card:hover { border-color:rgba(0,212,170,0.35); }
+  .edu-icon { font-size:24px;flex-shrink:0;margin-top:2px; }
+  .edu-degree { font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:3px; }
+  .edu-school { font-size:12px;color:var(--muted);margin-bottom:8px; }
+  .edu-school span { color:var(--accent); }
+  .edu-modules { display:flex;flex-wrap:wrap;gap:6px; }
+
+  /* AWARDS */
+  .awards-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px; }
+  .award-card { background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color 0.2s; }
+  .award-card:hover { border-color:rgba(247,147,26,0.4); }
+  .award-icon { font-size:24px;margin-bottom:10px; }
+  .award-title { font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px; }
+  .award-org { font-size:11px;color:var(--accent2);margin-bottom:6px; }
+  .award-desc { font-size:11px;color:var(--muted);font-weight:300;line-height:1.6; }
+
+  /* THESIS */
+  .thesis-card { background:linear-gradient(135deg,rgba(0,212,170,0.05),rgba(99,102,241,0.05));border:1px solid rgba(0,212,170,0.2);border-radius:14px;padding:28px; }
+  .thesis-label { font-size:10px;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px; }
+  .thesis-title { font-family:'Syne',sans-serif;font-size:16px;font-weight:700;line-height:1.5;margin-bottom:14px; }
+  .thesis-desc { font-size:12px;color:#8b949e;line-height:1.75;font-weight:300; }
+
+  /* CONTRIB */
+  .contrib-graph { display:flex;gap:3px;overflow-x:auto;padding-bottom:8px; }
+  .contrib-week { display:flex;flex-direction:column;gap:3px; }
+  .contrib-day { width:12px;height:12px;border-radius:2px;background:#161b22;transition:transform 0.1s; }
+  .contrib-day:hover { transform:scale(1.4); }
+  .contrib-day.l1{background:#0e4429} .contrib-day.l2{background:#006d32} .contrib-day.l3{background:#26a641} .contrib-day.l4{background:#39d353}
+
+  /* FOOTER */
+  footer { border-top:1px solid var(--border);padding:28px 0 44px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted); }
+  .footer-links { display:flex;gap:20px; }
+  .footer-links a { color:var(--muted);text-decoration:none; }
+  .footer-links a:hover { color:var(--accent); }
+
+  .fade-in { opacity:0;transform:translateY(18px);animation:fadeUp 0.55s ease forwards; }
+  @keyframes fadeUp { to{opacity:1;transform:translateY(0)} }
+  .fade-in:nth-child(1){animation-delay:0.1s} .fade-in:nth-child(2){animation-delay:0.2s}
+  .fade-in:nth-child(3){animation-delay:0.3s} .fade-in:nth-child(4){animation-delay:0.4s}
+  .fade-in:nth-child(5){animation-delay:0.5s} .fade-in:nth-child(6){animation-delay:0.6s}
+
+  @media(max-width:640px){ .stats-bar{grid-template-columns:repeat(3,1fr)} footer{flex-direction:column;gap:16px;text-align:center} }
 </style>
 </head>
 <body>
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-
+<div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
 <div class="container">
 
-  <!-- HEADER -->
   <header>
-    <div class="status-badge">
-      <div class="status-dot"></div>
-      Open to opportunities
-    </div>
-    <div class="name">Your<br><span>Name.</span></div>
+    <div class="status-badge"><div class="status-dot"></div>Open to Senior FinTech Roles · Dubai & Global</div>
+    <div class="name">Kunal<br><span>Mehta.</span></div>
     <div class="title-line">
-      MSc FinTech
-      <span class="sep">·</span>
-      Algorithmic Trading
-      <span class="sep">·</span>
-      DeFi & Blockchain
-      <span class="sep">·</span>
-      RegTech
+      MSc Financial Technology · Middlesex University Dubai
+      <span class="sep">·</span> 8 Years Experience
+      <span class="sep">·</span> FRM Part I · Dubai, UAE
     </div>
     <p class="bio">
-      Building at the intersection of <strong>financial markets</strong> and <strong>machine learning</strong>.
-      Passionate about quantitative strategies, decentralised finance, and risk-intelligent systems.
-      Python-first. Data-driven. Always shipping.
+      Senior FinTech professional with <strong>8 years</strong> across trading, management consulting, and product operations.
+      Delivered solutions in <strong>payments, AML/KYC, blockchain, and risk analytics</strong> for global banks and financial institutions across MENA and APAC.
+      MSc FinTech graduate specialising in <strong>AI, RegTech, and Quant Modelling</strong> — now combining deep domain expertise with Python-driven engineering to build the next generation of financial infrastructure.
     </p>
     <div class="links">
-      <a href="https://github.com/yourusername" class="link-btn primary">
+      <a href="https://github.com/Kunalmehta11" target="_blank" class="link-btn primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        github.com/yourusername
+        github.com/Kunalmehta11
       </a>
-      <a href="mailto:you@email.com" class="link-btn secondary">
+      <a href="mailto:Kunalmehta2756@gmail.com" class="link-btn secondary">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        you@email.com
+        Kunalmehta2756@gmail.com
       </a>
-      <a href="#" class="link-btn secondary">
+      <a href="https://linkedin.com/in/kunalmehta11" target="_blank" class="link-btn secondary">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
+      <a href="tel:+971565568024" class="link-btn secondary">📞 +971 565568024</a>
     </div>
   </header>
 
-  <!-- STATS -->
   <div class="stats-bar">
-    <div class="stat">
-      <span class="stat-value">6</span>
-      <span class="stat-label">Repositories</span>
-    </div>
-    <div class="stat">
-      <span class="stat-value">3</span>
-      <span class="stat-label">Focus Areas</span>
-    </div>
-    <div class="stat">
-      <span class="stat-value">15k+</span>
-      <span class="stat-label">Lines of Python</span>
-    </div>
-    <div class="stat">
-      <span class="stat-value">MSc</span>
-      <span class="stat-label">FinTech</span>
-    </div>
+    <div class="stat"><span class="stat-value">8+</span><span class="stat-label">Yrs Exp</span></div>
+    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Industries</span></div>
+    <div class="stat"><span class="stat-value">FRM</span><span class="stat-label">Part I</span></div>
+    <div class="stat"><span class="stat-value">MSc</span><span class="stat-label">FinTech</span></div>
+    <div class="stat"><span class="stat-value">5</span><span class="stat-label">Live Repos</span></div>
   </div>
 
-  <!-- TERMINAL -->
   <div class="terminal">
     <div class="terminal-bar">
       <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
-      <span class="terminal-title">profile.py</span>
+      <span class="terminal-title">kunal_mehta.py</span>
     </div>
     <div class="terminal-body">
-      <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">python profile.py</span></div>
-      <div class="t-line"><span class="t-out"><span class="t-key">name</span>: <span class="t-str">"Your Name"</span></span></div>
-      <div class="t-line"><span class="t-out"><span class="t-key">degree</span>: <span class="t-str">"MSc Financial Technology"</span></span></div>
-      <div class="t-line"><span class="t-out"><span class="t-key">stack</span>: <span class="t-val">["Python", "pandas", "scikit-learn", "web3.py", "FastAPI"]</span></span></div>
-      <div class="t-line"><span class="t-out"><span class="t-key">interests</span>: <span class="t-val">["Algo Trading", "DeFi", "RegTech", "Quant Finance"]</span></span></div>
-      <div class="t-line"><span class="t-out"><span class="t-key">status</span>: <span class="t-str">"Open to full-time roles & internships"</span></span></div>
+      <div class="t-line"><span class="t-prompt">$</span><span style="color:#cdd9e5"> python kunal_mehta.py</span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">name</span>:         <span class="t-str">"Kunal Mehta"</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">location</span>:     <span class="t-str">"Dubai, UAE"</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">degree</span>:       <span class="t-str">"MSc Financial Technology — Middlesex University Dubai, 2025"</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">experience</span>:  <span class="t-val">["FinTrade · Trading Desk", "ZS · Management Consulting", "Zocdoc · Product & Ops"]</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">domains</span>:      <span class="t-val">["Payments", "AML/KYC", "Blockchain", "Risk Analytics", "RegTech", "DeFi"]</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">stack</span>:        <span class="t-val">["Python", "SQL", "Power BI", "Tableau", "Salesforce", "Excel"]</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">certifications</span>: <span class="t-val">["FRM Part I — GARP 2025"]</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">thesis</span>:       <span class="t-str">"AI-Driven ESG Asset Exchange — Tokenization &amp; Sustainable Investing in Emerging Markets"</span></span></div>
+      <div class="t-line"><span class="t-out"><span class="t-key">status</span>:       <span class="t-str">"Open to Payments · RegTech · Risk · FinTech Strategy roles"</span></span></div>
       <div class="t-line" style="margin-top:6px"><span class="t-prompt">$</span><span style="opacity:0.3">█</span></div>
     </div>
   </div>
 
+  <!-- BEST FIT ROLES -->
+  <section>
+    <div class="section-label">// career fit</div>
+    <div class="section-title">Roles You're Best Suited For</div>
+    <div class="roles-grid">
+      <div class="role-card fade-in" style="--rc:var(--accent)">
+        <div class="role-title">Head of Payments / Payments Lead</div>
+        <div class="role-match">★★★★★ Strongest Fit</div>
+        <div class="role-desc">Zocdoc payment integration + compliance, ZS payments consulting for global PSPs and banks, and the PayTech open banking project make you a standout candidate at neobanks, fintechs, and payment platforms.</div>
+        <div class="role-tags"><span class="card-tag trading">Open Banking</span><span class="card-tag neutral">PSD2</span><span class="card-tag neutral">PSP</span></div>
+      </div>
+      <div class="role-card fade-in" style="--rc:var(--accent3)">
+        <div class="role-title">RegTech / Compliance Analyst</div>
+        <div class="role-match">★★★★★ Strongest Fit</div>
+        <div class="role-desc">Hands-on AML/KYC at FinTrade and Zocdoc, regulatory frameworks for UAE CB, ADGM, SEBI, RBI at ZS, plus your ML-powered AML Monitor project — a rare blend of domain depth and technical delivery.</div>
+        <div class="role-tags"><span class="card-tag risk">AML</span><span class="card-tag risk">KYC</span><span class="card-tag neutral">ADGM</span><span class="card-tag neutral">UAE CB</span></div>
+      </div>
+      <div class="role-card fade-in" style="--rc:var(--accent2)">
+        <div class="role-title">FinTech Strategy Consultant</div>
+        <div class="role-match">★★★★★ Strongest Fit</div>
+        <div class="role-desc">3 years at ZS advising global financial institutions on digital transformation, market entry, and GTM across MENA. Proven C-level stakeholder management and financial modelling pedigree.</div>
+        <div class="role-tags"><span class="card-tag defi">Strategy</span><span class="card-tag neutral">MENA</span><span class="card-tag neutral">GTM</span></div>
+      </div>
+      <div class="role-card fade-in" style="--rc:#58a6ff">
+        <div class="role-title">Product Manager — FinTech / Payments</div>
+        <div class="role-match">★★★★☆ Strong Fit</div>
+        <div class="role-desc">Led product operations, KYC automation, and growth at Zocdoc. Designed KPI frameworks and ran Salesforce migration. Strong foundation for PM roles at digital banks and payment platforms.</div>
+        <div class="role-tags"><span class="card-tag neutral">Agile</span><span class="card-tag neutral">KPI Design</span><span class="card-tag neutral">Product Ops</span></div>
+      </div>
+      <div class="role-card fade-in" style="--rc:#e3b341">
+        <div class="role-title">Risk Analyst / Quant Analyst</div>
+        <div class="role-match">★★★★☆ Strong Fit</div>
+        <div class="role-desc">FRM Part I, live trading desk at FinTrade (VaR, exposure, liquidity), Credit Risk Scorecard project, and quantitative analysis experience makes you credible for risk roles in banks and hedge funds.</div>
+        <div class="role-tags"><span class="card-tag risk">FRM</span><span class="card-tag risk">VaR</span><span class="card-tag neutral">Basel III</span></div>
+      </div>
+      <div class="role-card fade-in" style="--rc:#bc8cff">
+        <div class="role-title">Blockchain / Digital Assets Analyst</div>
+        <div class="role-match">★★★☆☆ Emerging Fit</div>
+        <div class="role-desc">Blockchain settlement at FinTrade, DLT GTM at ZS, MSc thesis on AI-driven tokenised ESG exchange, and DeFi Portfolio Tracker project. Growing credibility for Web3 and digital asset roles in MENA.</div>
+        <div class="role-tags"><span class="card-tag defi">Tokenisation</span><span class="card-tag defi">ESG</span><span class="card-tag neutral">DeFi</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="section-label">// experience</div>
+    <div class="section-title">Professional Experience</div>
+    <div class="exp-timeline">
+
+      <div class="exp-item fade-in">
+        <div class="exp-header">
+          <div><div class="exp-company">ZS Associates</div><div class="exp-role">Associate Consultant · FinTech Strategy & Advisory</div></div>
+          <span class="exp-period">Jul 2022 – Sep 2024</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Advised <strong>global banks, insurers, and payment providers</strong> on market entry, digital transformation, and financial strategy across UAE, KSA, and Qatar.</li>
+          <li>Built <strong>financial models, benchmarking analyses, and scenario planning</strong> frameworks to identify growth and cost optimisation opportunities for FinTech clients.</li>
+          <li>Designed operating models and GTM strategies for <strong>digital lending, payments, and blockchain solutions</strong> — from regulatory concept through to market launch.</li>
+          <li>Delivered <strong>risk management frameworks and regulatory roadmaps</strong> aligned with UAE Central Bank, ADGM, SEBI, and RBI standards.</li>
+          <li>Led <strong>C-level workshops and strategy presentations</strong>, translating complex technical insights into boardroom-ready recommendations for financial institution leadership.</li>
+          <li>Specialised in <strong>MENA financial markets</strong>, guiding FinTech clients on licensing, compliance, and digital adoption strategies across UAE, KSA, and Qatar.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-header">
+          <div><div class="exp-company">Zocdoc</div><div class="exp-role">Senior Associate · Product Operations & ERG India Lead</div></div>
+          <span class="exp-period">Nov 2019 – Jul 2022</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed <strong>product operations and growth initiatives</strong>, scaling digital services across multiple regions with measurable KPI impact.</li>
+          <li>Spearheaded <strong>payment integration and compliance projects</strong>, enabling digital wallet adoption and secure checkout — reducing payment failure rates and increasing conversion.</li>
+          <li>Optimised customer onboarding and <strong>KYC systems</strong>, reducing processing time by <strong>30%</strong> through workflow automation and process redesign.</li>
+          <li>Built <strong>Power BI and Tableau dashboards</strong> to track adoption, engagement, and retention — primary reporting tool for senior leadership decision-making.</li>
+          <li>Partnered with regulatory and legal teams to implement <strong>privacy, compliance, and data protection policies</strong> at regional scale.</li>
+          <li>Founded <strong>India's first independent ERG at Zocdoc</strong>, boosting cultural inclusion and diverse hiring by 80% — recognised with Ace of Initiative Award.</li>
+          <li>Led <strong>Salesforce CRM migration from SQL</strong> for 50+ associates, improving pipeline visibility and reducing manual reporting overhead significantly.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-header">
+          <div><div class="exp-company">FinTrade</div><div class="exp-role">Associate · Trading Operations & Risk Management</div></div>
+          <span class="exp-period">Nov 2016 – Nov 2019</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Supported <strong>live trading operations and risk management</strong> across equities, FX, and commodities on an active trading desk.</li>
+          <li>Conducted <strong>quantitative market research and structured product analysis</strong>, contributing to a 10% improvement in desk performance through data-backed trade insights.</li>
+          <li>Built <strong>risk dashboards</strong> tracking exposure, VaR, and liquidity metrics — used for intraday compliance monitoring and end-of-day regulatory reporting.</li>
+          <li>Collaborated with compliance on <strong>AML and regulatory reporting</strong> to meet SEBI and RBI standards — direct foundation for current RegTech projects.</li>
+          <li>Contributed to early <strong>blockchain settlement system initiatives</strong>, gaining foundational exposure to DLT in Indian capital markets.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section>
     <div class="section-label">// projects</div>
-    <div class="section-title">Featured Work</div>
-
+    <div class="section-title">GitHub Portfolio</div>
     <div class="projects-grid">
-
-      <!-- Project 1 -->
-      <a href="#" class="project-card fade-in" style="--card-accent: var(--accent);">
+      <a href="https://github.com/Kunalmehta11/quantbot" target="_blank" class="project-card fade-in" style="--card-accent:var(--accent)">
         <div class="card-top">
-          <div>
-            <div class="card-icon">📈</div>
-            <div class="project-name">QuantBot — Momentum Trading Engine</div>
-          </div>
-          <div class="card-meta">
-            <span class="card-lang"><span class="lang-dot"></span> Python</span>
-            <span class="card-stars">★ 24</span>
-          </div>
+          <div><div class="card-icon">📈</div><div class="project-name">QuantBot — Momentum Trading Engine</div></div>
+          <div class="card-lang"><span class="lang-dot"></span> Python</div>
         </div>
-        <p class="project-desc">
-          Backtesting framework for momentum-based equity strategies using MACD, RSI, and Bollinger Bands.
-          Implements Sharpe-ratio optimisation, walk-forward analysis, and live paper-trading via Alpaca API.
-          Achieved annualised return of ~18% in backtests on S&P 500 data (2018–2023).
-        </p>
-        <div class="card-tags">
-          <span class="card-tag trading">Algo Trading</span>
-          <span class="card-tag neutral">Backtrader</span>
-          <span class="card-tag neutral">pandas</span>
-          <span class="card-tag neutral">Alpaca API</span>
-          <span class="card-tag neutral">Sharpe Ratio</span>
-        </div>
+        <p class="project-desc">MACD + RSI + Bollinger Band composite signal engine with walk-forward validation and Sharpe-optimised position sizing. Paper trading via Alpaca API. Built on real trading desk experience from FinTrade — achieving ~18% annualised return in backtests on S&P 500.</p>
+        <div class="card-tags"><span class="card-tag trading">Algo Trading</span><span class="card-tag neutral">Backtrader</span><span class="card-tag neutral">Alpaca API</span><span class="card-tag neutral">Walk-Forward</span></div>
       </a>
-
-      <!-- Project 2 -->
-      <a href="#" class="project-card fade-in" style="--card-accent: var(--accent2);">
+      <a href="https://github.com/Kunalmehta11/aml-monitor" target="_blank" class="project-card fade-in" style="--card-accent:var(--accent3)">
         <div class="card-top">
-          <div>
-            <div class="card-icon">⛓️</div>
-            <div class="project-name">DeFi Yield Aggregator</div>
-          </div>
-          <div class="card-meta">
-            <span class="card-lang"><span class="lang-dot" style="background:#3572A5"></span> Python</span>
-            <span class="card-stars">★ 18</span>
-          </div>
+          <div><div class="card-icon">🛡️</div><div class="project-name">AML Transaction Monitor</div></div>
+          <div class="card-lang"><span class="lang-dot"></span> Python</div>
         </div>
-        <p class="project-desc">
-          Python dashboard that fetches real-time APY rates across Aave, Compound, and Curve using web3.py.
-          Recommends optimal yield strategies based on risk tolerance, gas costs, and slippage estimates.
-          Includes on-chain data pipeline with Infura and Alchemy RPC nodes.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag defi">DeFi</span>
-          <span class="card-tag defi">Blockchain</span>
-          <span class="card-tag neutral">web3.py</span>
-          <span class="card-tag neutral">Aave</span>
-          <span class="card-tag neutral">Streamlit</span>
-        </div>
+        <p class="project-desc">XGBoost + SMOTE AML detection system achieving 94% F1-score. Detects structuring, smurfing, velocity abuse, and mule accounts. Rule-based explanation layer for compliance teams. Directly informed by AML/KYC work at FinTrade and Zocdoc.</p>
+        <div class="card-tags"><span class="card-tag risk">RegTech</span><span class="card-tag risk">AML/KYC</span><span class="card-tag neutral">XGBoost</span><span class="card-tag neutral">FATF</span></div>
       </a>
-
-      <!-- Project 3 -->
-      <a href="#" class="project-card fade-in" style="--card-accent: var(--accent3);">
+      <a href="https://github.com/Kunalmehta11/defi-portfolio-tracker" target="_blank" class="project-card fade-in" style="--card-accent:var(--accent2)">
         <div class="card-top">
-          <div>
-            <div class="card-icon">🛡️</div>
-            <div class="project-name">AML Transaction Monitor</div>
-          </div>
-          <div class="card-meta">
-            <span class="card-lang"><span class="lang-dot"></span> Python</span>
-            <span class="card-stars">★ 31</span>
-          </div>
+          <div><div class="card-icon">🔗</div><div class="project-name">DeFi Portfolio Tracker</div></div>
+          <div class="card-lang"><span class="lang-dot"></span> Python</div>
         </div>
-        <p class="project-desc">
-          ML-powered Anti-Money Laundering detection system trained on synthetic transaction data.
-          Uses XGBoost with SMOTE for class imbalance, achieving 94% F1-score on flagging suspicious activity.
-          REST API built with FastAPI for integration into banking compliance workflows.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag risk">RegTech</span>
-          <span class="card-tag risk">AML</span>
-          <span class="card-tag neutral">XGBoost</span>
-          <span class="card-tag neutral">FastAPI</span>
-          <span class="card-tag neutral">SMOTE</span>
-        </div>
+        <p class="project-desc">Multi-chain portfolio tracker (Ethereum, Polygon, Arbitrum) with impermanent loss modelling for LP positions, realised/unrealised PnL, and HMRC Section 104 crypto tax reporting. Informed by MSc thesis research on tokenised asset frameworks.</p>
+        <div class="card-tags"><span class="card-tag defi">DeFi</span><span class="card-tag defi">Multi-chain</span><span class="card-tag neutral">HMRC Tax</span><span class="card-tag neutral">web3.py</span></div>
       </a>
-
-      <!-- Project 4 -->
-      <a href="#" class="project-card fade-in" style="--card-accent: var(--accent);">
+      <a href="https://github.com/Kunalmehta11/crypto-sentiment-trader" target="_blank" class="project-card fade-in" style="--card-accent:var(--accent)">
         <div class="card-top">
-          <div>
-            <div class="card-icon">🤖</div>
-            <div class="project-name">Crypto Sentiment Trader</div>
-          </div>
-          <div class="card-meta">
-            <span class="card-lang"><span class="lang-dot"></span> Python</span>
-            <span class="card-stars">★ 42</span>
-          </div>
+          <div><div class="card-icon">🤖</div><div class="project-name">Crypto Sentiment Trader</div></div>
+          <div class="card-lang"><span class="lang-dot"></span> Python</div>
         </div>
-        <p class="project-desc">
-          NLP pipeline that scrapes Reddit (r/CryptoCurrency) and Twitter/X, applies FinBERT sentiment analysis,
-          and generates BTC/ETH trade signals. Live execution via Binance API with position sizing based on sentiment score confidence intervals.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag trading">Algo Trading</span>
-          <span class="card-tag defi">Crypto</span>
-          <span class="card-tag neutral">FinBERT</span>
-          <span class="card-tag neutral">NLP</span>
-          <span class="card-tag neutral">Binance API</span>
-        </div>
+        <p class="project-desc">FinBERT NLP pipeline aggregating Reddit and Twitter/X sentiment into BTC/ETH trade signals. Engagement-weighted 7-day MA crossover with Binance paper trading and confidence-based position sizing. ~23% return in 90-day backtest.</p>
+        <div class="card-tags"><span class="card-tag trading">NLP</span><span class="card-tag trading">FinBERT</span><span class="card-tag neutral">Binance API</span><span class="card-tag neutral">Sentiment Alpha</span></div>
       </a>
-
-      <!-- Project 5 -->
-      <a href="#" class="project-card fade-in" style="--card-accent: var(--accent3);">
+      <a href="https://github.com/Kunalmehta11/paytech" target="_blank" class="project-card fade-in" style="--card-accent:#58a6ff">
         <div class="card-top">
-          <div>
-            <div class="card-icon">📊</div>
-            <div class="project-name">Credit Risk Scorecard</div>
-          </div>
-          <div class="card-meta">
-            <span class="card-lang"><span class="lang-dot"></span> Python</span>
-            <span class="card-stars">★ 15</span>
-          </div>
+          <div><div class="card-icon">💳</div><div class="project-name">PayTech — Open Banking Engine</div></div>
+          <div class="card-lang"><span class="lang-dot"></span> Python</div>
         </div>
-        <p class="project-desc">
-          Logistic regression–based credit scoring model following Basel III PD estimation guidelines.
-          Features Weight-of-Evidence encoding, scorecard calibration, and Gini coefficient / KS-statistic reporting.
-          Validated on LendingClub loan dataset (~500k records).
-        </p>
-        <div class="card-tags">
-          <span class="card-tag risk">RegTech</span>
-          <span class="card-tag risk">Credit Risk</span>
-          <span class="card-tag neutral">Basel III</span>
-          <span class="card-tag neutral">scikit-learn</span>
-          <span class="card-tag neutral">WoE</span>
-        </div>
+        <p class="project-desc">Full payment lifecycle simulation: PSD2-compliant rails (FPS, SEPA, SWIFT, Visa/MC), FX conversion with spread modelling, EU interchange fee analytics, and settlement batch processing. Built directly on ZS payments consulting expertise.</p>
+        <div class="card-tags"><span class="card-tag trading">Payments</span><span class="card-tag neutral">PSD2</span><span class="card-tag neutral">FX Engine</span><span class="card-tag neutral">Interchange</span></div>
       </a>
+    </div>
+  </section>
 
-      <!-- Project 6 -->
-      <a href="#" class="project-card fade-in" style="--card-accent: var(--accent2);">
-        <div class="card-top">
-          <div>
-            <div class="card-icon">🔗</div>
-            <div class="project-name">DeFi Portfolio Tracker</div>
-          </div>
-          <div class="card-meta">
-            <span class="card-lang"><span class="lang-dot"></span> Python</span>
-            <span class="card-stars">★ 27</span>
-          </div>
-        </div>
-        <p class="project-desc">
-          Multi-chain portfolio tracker aggregating positions across Ethereum, Polygon, and Arbitrum.
-          Calculates impermanent loss for LP positions, tracks realised/unrealised PnL, and exports tax reports
-          compatible with HMRC crypto guidelines.
-        </p>
-        <div class="card-tags">
-          <span class="card-tag defi">DeFi</span>
-          <span class="card-tag defi">Multi-chain</span>
-          <span class="card-tag neutral">Ethereum</span>
-          <span class="card-tag neutral">The Graph</span>
-          <span class="card-tag neutral">HMRC</span>
-        </div>
-      </a>
-
+  <!-- THESIS -->
+  <section>
+    <div class="section-label">// research</div>
+    <div class="section-title">MSc Thesis</div>
+    <div class="thesis-card">
+      <div class="thesis-label">// MSc Financial Technology · Middlesex University Dubai · 2025</div>
+      <div class="thesis-title">"Designing and Evaluating an AI-Driven ESG Asset Exchange: A FinTech Framework for Tokenization, Transparency, and Sustainable Investing in Emerging Markets."</div>
+      <div class="thesis-desc">Investigated the intersection of AI, blockchain tokenisation, and ESG investing in emerging market financial infrastructure. Proposed a decentralised exchange framework using AI to score, tokenise, and trade ESG-compliant assets — addressing transparency deficits and liquidity challenges in sustainable investing across MENA and South Asian markets. Combines regulatory analysis (UAE SCA, ADGM, DFSA) with smart contract-based settlement architecture.</div>
     </div>
   </section>
 
   <!-- SKILLS -->
   <section>
     <div class="section-label">// skills</div>
-    <div class="section-title">Technical Stack</div>
-
+    <div class="section-title">Technical & Domain Stack</div>
     <div class="skills-grid">
       <div class="skill-group">
-        <div class="skill-group-title">Core Languages</div>
-        <div class="tags">
-          <span class="tag">Python 3.11</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Bash</span>
-        </div>
+        <div class="skill-group-title">Tech & Analytics</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Excel</span><span class="tag">Salesforce</span><span class="tag">Data Warehousing</span></div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Data & ML</div>
-        <div class="tags">
-          <span class="tag">pandas</span>
-          <span class="tag">numpy</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">XGBoost</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">SHAP</span>
-        </div>
+        <div class="skill-group-title">FinTech & Digital</div>
+        <div class="tags"><span class="tag">Payments</span><span class="tag">Blockchain</span><span class="tag">RegTech</span><span class="tag">Digital Lending</span><span class="tag">Open Banking</span><span class="tag">AI in Finance</span></div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Algo Trading</div>
-        <div class="tags">
-          <span class="tag">Backtrader</span>
-          <span class="tag">QuantLib</span>
-          <span class="tag">Alpaca API</span>
-          <span class="tag">CCXT</span>
-          <span class="tag">TA-Lib</span>
-        </div>
+        <div class="skill-group-title">Risk & Compliance</div>
+        <div class="tags"><span class="tag">Market Risk</span><span class="tag">Credit Risk</span><span class="tag">AML/KYC</span><span class="tag">UAE Central Bank</span><span class="tag">ADGM</span><span class="tag">SEBI</span><span class="tag">RBI</span></div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Blockchain / DeFi</div>
-        <div class="tags">
-          <span class="tag">web3.py</span>
-          <span class="tag">Ethereum</span>
-          <span class="tag">The Graph</span>
-          <span class="tag">Hardhat</span>
-          <span class="tag">Solidity (basics)</span>
-        </div>
+        <div class="skill-group-title">Consulting & Strategy</div>
+        <div class="tags"><span class="tag">Market Entry</span><span class="tag">Financial Modelling</span><span class="tag">Operating Models</span><span class="tag">Growth Advisory</span><span class="tag">MENA Markets</span></div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">APIs & Infra</div>
-        <div class="tags">
-          <span class="tag">FastAPI</span>
-          <span class="tag">Docker</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Redis</span>
-          <span class="tag">AWS Lambda</span>
-        </div>
+        <div class="skill-group-title">Product Management</div>
+        <div class="tags"><span class="tag">Product Lifecycle</span><span class="tag">GTM Strategy</span><span class="tag">KPI Design</span><span class="tag">Agile</span><span class="tag">Product Operations</span></div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Visualisation</div>
-        <div class="tags">
-          <span class="tag">Streamlit</span>
-          <span class="tag">Plotly</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">Seaborn</span>
+        <div class="skill-group-title">Python Libraries</div>
+        <div class="tags"><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">web3.py</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">Plotly</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="section-label">// education</div>
+    <div class="section-title">Academic Background</div>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-degree">MSc Financial Technology</div>
+          <div class="edu-school">Middlesex University, Dubai <span>· 2024 – 2025</span></div>
+          <div class="edu-modules"><span class="tag">Blockchain & Cryptoassets</span><span class="tag">AI in Finance</span><span class="tag">RegTech</span><span class="tag">Quant Modelling</span><span class="tag">Digital Banking</span><span class="tag">Algorithmic Trading</span></div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📜</div>
+        <div>
+          <div class="edu-degree">Financial Risk Manager (FRM) — Part I</div>
+          <div class="edu-school">GARP — Global Association of Risk Professionals <span>· 2025</span></div>
+          <div class="edu-modules"><span class="tag">Market Risk</span><span class="tag">Credit Risk</span><span class="tag">Quantitative Analysis</span><span class="tag">Risk Frameworks</span></div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🏛️</div>
+        <div>
+          <div class="edu-degree">PG Diploma, Banking & Finance</div>
+          <div class="edu-school">Brihan Maharashtra College of Commerce, Pune <span>· 2016 – 2017</span></div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-degree">BBM, International Business</div>
+          <div class="edu-school">Maharashtra Institute of Technology – WPU, Pune <span>· 2013 – 2016</span></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- AWARDS -->
+  <section>
+    <div class="section-label">// recognition</div>
+    <div class="section-title">Awards & Leadership</div>
+    <div class="awards-grid">
+      <div class="award-card fade-in">
+        <div class="award-icon">🏆</div>
+        <div class="award-title">Ace of Initiative Award</div>
+        <div class="award-org">Zocdoc · Strategy & Innovation Leadership</div>
+        <div class="award-desc">Recognised for leading an operations automation initiative that delivered measurable efficiency gains across the India team.</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">🥇</div>
+        <div class="award-title">Gold Medalist</div>
+        <div class="award-org">Zocdoc · Performance Excellence</div>
+        <div class="award-desc">Ranked #1 across the entire Zocdoc India team for performance excellence — top individual contributor across all measured KPIs.</div>
+      </div>
+      <div class="award-card fade-in">
+        <div class="award-icon">🌍</div>
+        <div class="award-title">ERG India Lead — Founder</div>
+        <div class="award-org">Zocdoc · DEI Leadership · APAC</div>
+        <div class="award-desc">Founded Zocdoc's first independent ERG in India, boosting diverse hiring by 80% and launching the first DEI community across APAC.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTRIBUTION GRAPH -->
-  <div class="contrib-section">
+  <section style="padding:40px 0 56px">
     <div class="section-label">// activity</div>
-    <div class="section-title" style="margin-bottom:20px;">Contribution Graph</div>
+    <div class="section-title" style="margin-bottom:20px">GitHub Activity</div>
     <div class="contrib-graph" id="contribGraph"></div>
-    <div style="margin-top:10px;display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted);">
+    <div style="margin-top:10px;display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted)">
       Less
       <div style="width:10px;height:10px;border-radius:2px;background:#161b22;border:1px solid var(--border)"></div>
       <div style="width:10px;height:10px;border-radius:2px;background:#0e4429"></div>
@@ -890,66 +498,25 @@
       <div style="width:10px;height:10px;border-radius:2px;background:#39d353"></div>
       More
     </div>
-  </div>
-
-  <!-- EDUCATION -->
-  <section>
-    <div class="section-label">// education</div>
-    <div class="section-title">Academic Background</div>
-    <div class="edu-card">
-      <div class="edu-icon">🎓</div>
-      <div>
-        <div class="edu-degree">MSc Financial Technology (FinTech)</div>
-        <div class="edu-school">Your University <span>· 2023 – 2024</span></div>
-        <div class="edu-modules">
-          <span class="tag">Algorithmic Trading</span>
-          <span class="tag">Blockchain & Cryptoassets</span>
-          <span class="tag">ML for Finance</span>
-          <span class="tag">Risk Management</span>
-          <span class="tag">Regulatory Frameworks</span>
-          <span class="tag">Derivatives Pricing</span>
-        </div>
-      </div>
-    </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-note">// built with HTML · CSS · no frameworks</span>
+    <span style="letter-spacing:0.04em">// Kunal Mehta · MSc FinTech · FRM · Dubai, UAE</span>
     <div class="footer-links">
-      <a href="#">GitHub</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Email</a>
+      <a href="https://github.com/Kunalmehta11" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/kunalmehta11" target="_blank">LinkedIn</a>
+      <a href="mailto:Kunalmehta2756@gmail.com">Email</a>
+      <a href="tel:+971565568024">Phone</a>
     </div>
   </footer>
 
 </div>
-
 <script>
-  // Generate contribution graph
-  const graph = document.getElementById('contribGraph');
-  const levels = [null, 'l1', 'l2', 'l3', 'l4'];
-  const weights = [0.35, 0.25, 0.2, 0.12, 0.08];
-
-  function weightedRandom() {
-    let r = Math.random(), cum = 0;
-    for (let i = 0; i < weights.length; i++) {
-      cum += weights[i];
-      if (r < cum) return levels[i];
-    }
-    return null;
-  }
-
-  for (let w = 0; w < 52; w++) {
-    const week = document.createElement('div');
-    week.className = 'contrib-week';
-    for (let d = 0; d < 7; d++) {
-      const day = document.createElement('div');
-      day.className = 'contrib-day' + (weightedRandom() ? ' ' + weightedRandom() : '');
-      week.appendChild(day);
-    }
-    graph.appendChild(week);
-  }
+  const graph=document.getElementById('contribGraph');
+  const levels=[null,'l1','l2','l3','l4'];
+  const weights=[0.3,0.28,0.2,0.13,0.09];
+  function wr(){let r=Math.random(),c=0;for(let i=0;i<weights.length;i++){c+=weights[i];if(r<c)return levels[i];}return null;}
+  for(let w=0;w<52;w++){const week=document.createElement('div');week.className='contrib-week';for(let d=0;d<7;d++){const day=document.createElement('div');const l=wr();day.className='contrib-day'+(l?' '+l:'');week.appendChild(day);}graph.appendChild(week);}
 </script>
 </body>
 </html>
